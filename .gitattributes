@@ -1,0 +1,37 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# C# files
+*.cs text diff=csharp
+
+# SQL files
+*.sql text
+
+# Web files
+*.html text
+*.css text
+*.js text
+*.json text
+
+# Configuration files
+*.config text
+*.yml text
+*.yaml text
+
+# Documentation
+*.md text
+*.txt text
+
+# Binary files
+*.dll binary
+*.exe binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.mov binary
+*.mp4 binary
+*.mp3 binary
+*.zip binary
+*.gz binary

@@ -1,0 +1,80 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="hero">
+    <h1>Benvenuto in FantaScommesse!</h1>
+    <p class="lead">Il gioco di pronostici tra amici sulla Serie A</p>
+</div>
+
+<div class="card">
+    <h2 class="card-title">Come funziona</h2>
+    <ol>
+        <li><strong>Registrati</strong> e iscriviti alla stagione corrente</li>
+        <li><strong>Compila i pronostici</strong> per ogni giornata (4 doppie, 3 fisse, 3 speciali)</li>
+        <li><strong>Accumula punti</strong> e bonus per scalare la classifica</li>
+        <li><strong>Vinci premi</strong> settimanali e finali!</li>
+    </ol>
+</div>
+
+<div class="card">
+    <h2 class="card-title">Regole del gioco</h2>
+    <h3>Compilazione colonna (10 partite)</h3>
+    <ul>
+        <li><strong>4 doppie</strong>: 1X, X2 o 12</li>
+        <li><strong>3 fisse</strong>: 1, X o 2</li>
+        <li><strong>3 speciali</strong>: GG, NG, OVER o UNDER</li>
+    </ul>
+
+    <h3>Punteggi</h3>
+    <ul>
+        <li><strong>Punti base</strong>: 1 punto per ogni pronostico corretto (max 10/10)</li>
+        <li><strong>Bonus 10/10</strong>: +5 se unico, +3 se condiviso</li>
+        <li><strong>Bonus top score</strong>: +3 se unico, +1 se condiviso (esclusi 10/10)</li>
+        <li><strong>Bonus risultato unico</strong>: +5 se unico su una partita</li>
+        <li><strong>Bonus fissa unica</strong>: +1 se unico con una fissa</li>
+    </ul>
+
+    <h3>Penalità</h3>
+    <ul>
+        <li><strong>Ritardo</strong>: -1 se invio dopo la deadline</li>
+        <li><strong>Errori</strong>: -1 per errori di compilazione + <strong>esclusione dai bonus</strong></li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2 class="card-title">Prossima giornata</h2>
+    <p>Caricamento in corso...</p>
+    <a href="/predictions" class="btn btn-primary">Compila pronostici</a>
+</div>
+
+<div class="card">
+    <h2 class="card-title">Installa l'App</h2>
+    <p>Installa FantaScommesse sul tuo dispositivo per un'esperienza ottimale:</p>
+    <ul>
+        <li>✅ Funziona offline</li>
+        <li>✅ Notifiche push per deadline e risultati</li>
+        <li>✅ Esperienza app nativa</li>
+        <li>✅ Accesso rapido dalla home screen</li>
+    </ul>
+    <button id="enable-notifications" class="btn btn-secondary">
+        Abilita notifiche
+    </button>
+</div>
+
+@section Scripts {
+<script>
+    // Load next round information
+    fetch('/api/v1/rounds/current', {
+        headers: {
+            'Authorization': 'Bearer ' + localStorage.getItem('token')
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Next round:', data);
+        // TODO: Display round information
+    })
+    .catch(error => console.error('Error loading round:', error));
+</script>
+}

@@ -1,0 +1,309 @@
+/* FantaScommesse PWA Styles */
+/* Mobile-first, accessible design */
+
+:root {
+  --primary-color: #1a73e8;
+  --primary-dark: #1557b0;
+  --secondary-color: #34a853;
+  --danger-color: #ea4335;
+  --warning-color: #fbbc04;
+  --text-primary: #202124;
+  --text-secondary: #5f6368;
+  --background: #ffffff;
+  --surface: #f8f9fa;
+  --border: #dadce0;
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background-color: var(--background);
+}
+
+/* Accessibility */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Skip to main content link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--primary-color);
+  color: white;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Header */
+.header {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem 0;
+  box-shadow: 0 2px 4px var(--shadow);
+}
+
+.header h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Navigation */
+.nav {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.nav a:hover,
+.nav a:focus {
+  background-color: var(--primary-dark);
+}
+
+/* Main content */
+.main {
+  min-height: calc(100vh - 200px);
+  padding: 2rem 0;
+}
+
+/* Cards */
+.card {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 3px var(--shadow);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--primary-dark);
+}
+
+.btn-secondary {
+  background-color: var(--secondary-color);
+  color: white;
+}
+
+.btn-danger {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Forms */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  transition: border-color 0.3s;
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.1);
+}
+
+/* Toast notifications */
+.toast {
+  position: fixed;
+  bottom: -100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--text-primary);
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px var(--shadow);
+  transition: bottom 0.3s;
+  z-index: 1000;
+}
+
+.toast.show {
+  bottom: 2rem;
+}
+
+/* Offline indicator */
+.offline-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--warning-color);
+  color: var(--text-primary);
+  padding: 0.5rem;
+  text-align: center;
+  font-weight: 500;
+  z-index: 999;
+}
+
+/* Scoreboard table */
+.scoreboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.scoreboard-table th,
+.scoreboard-table td {
+  padding: 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.scoreboard-table th {
+  background-color: var(--surface);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.scoreboard-table tr:hover {
+  background-color: var(--surface);
+}
+
+/* Prediction grid */
+.prediction-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.match-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: var(--surface);
+  border-radius: 4px;
+}
+
+.match-teams {
+  flex: 1;
+  font-weight: 500;
+}
+
+.match-selection {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+  }
+
+  .match-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .scoreboard-table {
+    font-size: 0.875rem;
+  }
+
+  .scoreboard-table th,
+  .scoreboard-table td {
+    padding: 0.5rem;
+  }
+}
+
+/* Loading spinner */
+.spinner {
+  border: 3px solid var(--border);
+  border-top: 3px solid var(--primary-color);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 2rem auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
