@@ -1,0 +1,50 @@
+@{
+    ViewData["Title"] = "Compila Pronostici";
+}
+
+<h1>Compila Pronostici - Giornata @ViewBag.RoundNo</h1>
+
+<p class="deadline-info">
+    <strong>Scadenza:</strong> <span id="deadline">@ViewBag.Deadline</span>
+</p>
+
+<form id="prediction-form" method="post">
+    <div class="prediction-grid">
+        @for (int i = 1; i <= 10; i++)
+        {
+            <div class="match-row">
+                <div class="match-info">
+                    <span class="match-order">@i</span>
+                    <span class="match-teams" id="match-@i-teams">Caricamento...</span>
+                </div>
+                <div class="selection-buttons">
+                    <button type="button" class="btn-selection" data-match="@i" data-type="double" data-value="1X">1X</button>
+                    <button type="button" class="btn-selection" data-match="@i" data-type="double" data-value="X2">X2</button>
+                    <button type="button" class="btn-selection" data-match="@i" data-type="double" data-value="12">12</button>
+                    <button type="button" class="btn-selection" data-match="@i" data-type="single" data-value="1">1</button>
+                    <button type="button" class="btn-selection" data-match="@i" data-type="single" data-value="X">X</button>
+                    <button type="button" class="btn-selection" data-match="@i" data-type="single" data-value="2">2</button>
+                    <button type="button" class="btn-selection" data-match="@i" data-type="special" data-value="GG">GG</button>
+                    <button type="button" class="btn-selection" data-match="@i" data-type="special" data-value="NG">NG</button>
+                    <button type="button" class="btn-selection" data-match="@i" data-type="special" data-value="OVER">OVER</button>
+                    <button type="button" class="btn-selection" data-match="@i" data-type="special" data-value="UNDER">UNDER</button>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="counters">
+        <div class="counter">Doppie: <span id="doubles-count">0</span>/4</div>
+        <div class="counter">Fisse: <span id="singles-count">0</span>/3</div>
+        <div class="counter">Speciali: <span id="specials-count">0</span>/3</div>
+    </div>
+
+    <div class="form-actions">
+        <button type="button" id="save-draft" class="btn btn-secondary">Salva Bozza</button>
+        <button type="submit" id="submit-prediction" class="btn btn-primary">Invia Pronostico</button>
+    </div>
+</form>
+
+@section Scripts {
+<script src="/js/prediction-form.js"></script>
+}

@@ -42,13 +42,29 @@ builder.Services.AddScoped<FantaScommesse.Repositories.IUserRepository, FantaSco
 builder.Services.AddScoped<FantaScommesse.Repositories.IRoundRepository, FantaScommesse.Repositories.RoundRepository>();
 builder.Services.AddScoped<FantaScommesse.Repositories.IMatchRepository, FantaScommesse.Repositories.MatchRepository>();
 builder.Services.AddScoped<FantaScommesse.Repositories.IPredictionRepository, FantaScommesse.Repositories.PredictionRepository>();
+builder.Services.AddScoped<FantaScommesse.Repositories.ISeasonRepository, FantaScommesse.Repositories.SeasonRepository>();
+builder.Services.AddScoped<FantaScommesse.Repositories.IParticipationRepository, FantaScommesse.Repositories.ParticipationRepository>();
+builder.Services.AddScoped<FantaScommesse.Repositories.IPaymentRepository, FantaScommesse.Repositories.PaymentRepository>();
+builder.Services.AddScoped<FantaScommesse.Repositories.IReferralRepository, FantaScommesse.Repositories.ReferralRepository>();
 
 // Register services
 builder.Services.AddScoped<FantaScommesse.Services.IAuthService, FantaScommesse.Services.AuthService>();
 builder.Services.AddScoped<FantaScommesse.Services.IScoringService, FantaScommesse.Services.ScoringService>();
+builder.Services.AddScoped<FantaScommesse.Services.IParticipationService, FantaScommesse.Services.ParticipationService>();
+builder.Services.AddScoped<FantaScommesse.Services.INotificationService, FantaScommesse.Services.NotificationService>();
+builder.Services.AddScoped<FantaScommesse.Services.IExternalApiService, FantaScommesse.Services.ExternalApiService>();
 
 // Register validators
 builder.Services.AddScoped<FantaScommesse.Validators.IPredictionValidator, FantaScommesse.Validators.PredictionValidator>();
+
+// Register utilities
+builder.Services.AddScoped<FantaScommesse.Utilities.CsvImporter>();
+
+// Register background jobs
+builder.Services.AddHostedService<FantaScommesse.BackgroundJobs.DeadlineReminderJob>();
+
+// Register HTTP client factory
+builder.Services.AddHttpClient();
 
 // CORS policy (for API endpoints)
 builder.Services.AddCors(options =>
@@ -64,6 +80,8 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline
+app.UseMiddleware<FantaScommesse.Middleware.ErrorHandlingMiddleware>();
+
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");

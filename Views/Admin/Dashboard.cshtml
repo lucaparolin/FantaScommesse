@@ -1,0 +1,54 @@
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<h1>Admin Dashboard</h1>
+
+<div class="admin-grid">
+    <div class="card">
+        <h2 class="card-title">Gestione Stagioni</h2>
+        <p>Crea e gestisci stagioni</p>
+        <a href="/admin/seasons" class="btn btn-primary">Gestisci Stagioni</a>
+    </div>
+
+    <div class="card">
+        <h2 class="card-title">Gestione Giornate</h2>
+        <p>Configura giornate e partite</p>
+        <a href="/admin/rounds" class="btn btn-primary">Gestisci Giornate</a>
+    </div>
+
+    <div class="card">
+        <h2 class="card-title">Chiusura Giornata</h2>
+        <p>Inserisci risultati e calcola punteggi</p>
+        <a href="/admin/rounds/close" class="btn btn-primary">Chiudi Giornata</a>
+    </div>
+
+    <div class="card">
+        <h2 class="card-title">Gestione Utenti</h2>
+        <p>Visualizza e gestisci utenti</p>
+        <a href="/admin/users" class="btn btn-primary">Gestisci Utenti</a>
+    </div>
+
+    <div class="card">
+        <h2 class="card-title">Pagamenti</h2>
+        <p>Monitora pagamenti e debiti</p>
+        <a href="/admin/payments" class="btn btn-primary">Gestisci Pagamenti</a>
+    </div>
+
+    <div class="card">
+        <h2 class="card-title">Import Dati</h2>
+        <p>Importa calendario e risultati</p>
+        <a href="/admin/import" class="btn btn-primary">Importa Dati</a>
+    </div>
+</div>
+
+@section Scripts {
+<style>
+.admin-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+</style>
+}
